@@ -6,16 +6,22 @@ from werkzeug.security import check_password_hash, generate_password_hash
 app = Flask(__name__)
 app.secret_key = 'gizli_anahtar'
 
+from flask import Flask, Response
+
+app = Flask(__name__)
+
 @app.after_request
 def set_csp(response: Response):
     response.headers["Content-Security-Policy"] = (
         "default-src 'self'; "
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://m.stripe.network; "
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://m.stripe.network blob:; "
         "worker-src 'self' blob:; "
         "frame-src 'self' https://js.stripe.com https://m.stripe.network; "
         "connect-src 'self' https://m.stripe.network https://api.stripe.com; "
+        "img-src 'self' data: https://js.stripe.com https://m.stripe.network; "
     )
     return response
+
 
 # Veritabanı bağlantı fonksiyonu
 def sql_baglanti():
