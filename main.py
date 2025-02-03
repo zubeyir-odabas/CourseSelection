@@ -1,10 +1,15 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session
+from flask import Flask,Response, render_template, request, jsonify, redirect, url_for, session
 import sqlite3
 from werkzeug.security import check_password_hash, generate_password_hash
 
 # Flask uygulaması
 app = Flask(__name__)
 app.secret_key = 'gizli_anahtar'
+
+@app.after_request
+def set_csp(response: Response):
+    response.headers["Content-Security-Policy"] = "script-src 'self' 'unsafe-inline' https://m.stripe.network; worker-src 'self' blob:;"
+    return response
 
 # Veritabanı bağlantı fonksiyonu
 def sql_baglanti():
