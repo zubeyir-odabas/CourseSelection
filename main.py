@@ -8,7 +8,13 @@ app.secret_key = 'gizli_anahtar'
 
 @app.after_request
 def set_csp(response: Response):
-    response.headers["Content-Security-Policy"] = "script-src 'self' 'unsafe-inline' https://m.stripe.network; worker-src 'self' blob:;"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://m.stripe.network; "
+        "worker-src 'self' blob:; "
+        "frame-src 'self' https://js.stripe.com https://m.stripe.network; "
+        "connect-src 'self' https://m.stripe.network https://api.stripe.com; "
+    )
     return response
 
 # Veritabanı bağlantı fonksiyonu
