@@ -1,0 +1,78 @@
+<!-- Ders Sil Modalı -->
+<div class="modal fade" id="silModal" tabindex="-1" aria-labelledby="silModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg border-0">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="silModalLabel">
+                    <i class="fas fa-exclamation-circle me-2"></i> Kayıt Sil
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="mb-0">Bu kaydı silmek istediğinize emin misiniz?</p>
+                <small class="text-muted">Bu işlem geri alınamaz.</small>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-1"></i> İptal
+                </button>
+                <button type="button" class="btn btn-danger px-4" id="silOnayla">
+                    <i class="fas fa-trash-alt me-1"></i> Sil
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ders Ekle Modalı -->
+<div class="modal fade" id="dersModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Ders Seç</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="dersForm">
+                    <div class="form-grup">
+                        <label for="alinabilenDersler">Ders Seçin</label>
+                        <select class="form-control" id="alinabilenDersler">
+                            <!-- JavaScript  -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Dersi Ekle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Öğrenci Silme Modalı -->
+<div class="modal fade" id="ogrenciSilModal" tabindex="-1" aria-labelledby="ogrenciSilModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg border-0">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="ogrenciSilModalLabel">
+                    <i class="fas fa-exclamation-circle me-2"></i> Öğrenci Sil
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="mb-0">Bu öğrenciyi silmek istediğinize emin misiniz?</p>
+                <small class="text-muted">Bu işlem geri alınamaz.</small>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-1"></i> İptal
+                </button>
+                <button type="button" class="btn btn-danger px-4" id="ogrenciSilOnayla">
+                    <i class="fas fa-trash-alt me-1"></i> Sil
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

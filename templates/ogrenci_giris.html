@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}Öğrenci Girişi{% endblock %}
+
+{% block content %}
+<div class="ogrenci-giris-sayfasi">
+    <div class="form-container">
+        <h1>Öğrenci Girişi</h1>
+        
+        <form method="post" action="{{ url_for('ogrenci_giris') }}">
+            <div class="form-group">
+                <label for="ogrenci_num">Öğrenci Numarası</label>
+                <input type="text" class="form-control" id="ogrenci_num" name="ogrenci_num" required>
+            </div>
+            <div class="form-group">
+                <label for="sifre">Şifre</label>
+                <input type="password" class="form-control" id="sifre" name="sifre" required>
+                <small>
+                    <input type="checkbox" onclick="togglePassword()"> Şifreyi Göster
+                </small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-3 w-100">Giriş Yap</button>
+            
+            <!-- Hata Mesajı -->
+            <div class="form-error-area">
+                {% if error %}
+                <div class="form-error">
+                    {{ error }}
+                </div>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

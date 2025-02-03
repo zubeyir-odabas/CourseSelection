@@ -1,0 +1,348 @@
+/* Genel sayfa düzeni */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Yatay kaymayı engeller */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar düzeni */
+/* Navbar Genel Stili */
+.navbar {
+    background-color: #112B49; /* Sidebar ile uyumlu koyu mavi */
+    color: #ffffff; /* Beyaz yazı */
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease; /* Yumuşak geçiş efekti */
+}
+
+.navbar-logo {
+    height: 40px; /* Logo yüksekliği */
+    width: 40px; /* Daire olması için genişlik de aynı */
+    border-radius: 50%; /* Yuvarlak görünüm */
+    margin-right: 10px; /* Yazıyla arasındaki boşluk */
+    object-fit: cover; /* Resmin düzgün görünmesi için */
+}
+
+/* Sidebar açıkken Navbar uyumu */
+.navbar.open {
+    margin-left: 250px; /* Sidebar açıkken Navbar ayarı */
+    max-width: calc(100% - 250px); /* Genişlik uyumu */
+}
+
+/* Navbar Sol Taraf: Marka ve Toggle */
+.navbar .navbar-brand {
+    color: #ffffff; /* Beyaz yazı */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-brand:hover {
+    color: white !important; /* Hover sırasında renk değişmesin */
+    text-decoration: none; /* Alt çizgi eklenmesini engelle */
+}
+
+/* Navbar Toggle Butonu */
+#sidebarToggle {
+    font-size: 1.5rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-right: 10px;
+}
+
+#sidebarToggle:hover {
+    color: #007bff; /* Hover durumunda renk değişimi */
+}
+
+/* Navbar Sağ Taraf */
+.navbar-right .text-white {
+    font-size: 1rem;
+    margin-right: 15px;
+    color: #FFFFFF; /* Beyaz yazı */
+}
+
+.navbar .btn-primary {
+    background-color: #E63946; /* Modern kırmızı */
+    border: none;
+    color: #ffffff; /* Beyaz yazı */
+    transition: background-color 0.3s ease;
+}
+
+.navbar .btn-primary:hover {
+    background-color: #C6283A; /* Hover durumunda daha koyu kırmızı */
+}
+
+.navbar a:hover, .navbar a.active {
+    color: #FFD700; /* Altın rengi hover */
+    text-decoration: none;
+}
+
+/* Sidebar temel stilleri */
+#sidebar-wrapper {
+    position: fixed;
+    top: 0px; /* Navbar ile aynı hizadan başlaması için */
+    left: -250px; /* Başlangıçta kapalı */
+    width: 250px;
+    height: 100vh; /* Navbar yüksekliği çıkarılarak tam yükseklik */
+    background-color: #112B49; /* Daha koyu mavi */
+    color: #ffffff;
+    z-index: 10; /* Sidebar seviyesini düzenle */
+    overflow-y: auto; /* Kaydırılabilir içerik */
+    transition: left 0.3s ease; /* Yumuşak geçiş efekti */
+    display: flex;
+    flex-direction: column; /* İçerikleri dikey sırala */
+
+    font-family: 'Arial', sans-serif; /* Modern font */
+}
+
+/* Sidebar açıkken */
+#sidebar-wrapper.open {
+    left: 0; /* Sidebar tamamen görünür */
+}
+
+/* Sidebar Logo ve Başlık */
+.sidebar-logo {
+    text-align: center;
+    padding: 20px 10px;
+    border-bottom: 1px solid #6c757d;
+}
+
+.round-logo-main {
+    height: 80px; /* Yükseklik */
+    width: 80px; /* Genişlik */
+    border-radius: 50%; /* Daire formunu korur */
+    margin-bottom: 10px;
+}
+
+.sidebar-title {
+    font-size: 1.2rem; /* Yazı boyutunu büyüttük */
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* Sidebar Menü Öğeleri */
+#sidebar-wrapper .list-group {
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar Menü Öğeleri */
+#sidebar-wrapper .list-group-item {
+    background-color: #112B49; /* Menü arka planı koyu mavi */
+    color: #ffffff; /* Yazı rengi beyaz */
+    font-size: 1rem; /* Yazı boyutu */
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease; /* Yumuşak geçiş */
+    border-left: 4px solid transparent; /* Aktif durum için yer ayır */
+}
+
+/* Hover Durumu */
+#sidebar-wrapper .list-group-item i {
+    margin-right: 10px;
+    color: #FFD700; /* İkonların altın rengi */
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: #1A73E8;
+    color: #ffffff;
+    border-left: 4px solid #FFD700;
+    box-shadow: 0 0 10px rgba(26, 115, 232, 0.5);
+    cursor: pointer;
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background-color: #134B8D;
+    font-weight: bold;
+}
+
+
+/* Ana içerik düzeni */
+.container-fluid {
+    margin-left: 0;
+    transition: margin-left 0.3s ease; /* Yumuşak geçiş efekti */
+}
+
+.container-fluid.open {
+    margin-left: 250px; /* Sidebar genişliği kadar boşluk bırak */
+    max-width: calc(100% - 250px); /* İçerik genişliğini dinamik yap */
+}
+
+/* Giriş ekranı */
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.round-logo-main {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.ogrenci-giris-sayfasi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 10px;
+}
+
+/* Hata mesajı için sabit alan */
+.form-error-area {
+    height: 30px; /* Hata mesajı için sabit yükseklik */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px; /* Üstten boşluk */
+}
+
+/* Hata mesajı stili */
+.form-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Eğer hata yoksa görünmez */
+.form-error-area:empty {
+    visibility: hidden; /* Mesaj yoksa boş alan görünmez */
+    height: 0; /* Yeri tamamen kaplamaz */
+}
+
+
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    max-width: 300px; /* Formun maksimum genişliği */
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.form-container .btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-container .btn:hover {
+    background-color: #0056b3;
+}
+
+.form-group small {
+    display: flex; /* Checkbox ve metni hizalar */
+    align-items: center; /* Dikey ortalar */
+    gap: 5px; /* Checkbox ile metin arasında boşluk */
+}
+
+#sifre {
+    margin-bottom: 0; /* Şifre alanı ve checkbox arasında gereksiz boşluğu kaldırır */
+}
+
+input[type="checkbox"] {
+    margin: 0; /* Checkbox varsayılan boşluklarını kaldırır */
+    vertical-align: middle; /* Dikey ortalar */
+}
+
+
+/* Button düzeni */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.button-group .btn {
+    width: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.button-group .btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+}
+
+.button-group .btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
+    border: none;
+}
+
+.toast-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1055;
+}
+
+
+.toast-body {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#sifre-degistir {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}

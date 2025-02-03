@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Giriş Ekranı{% endblock %}
+
+{% block content %}
+<div class="logo-container">
+    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Large Logo" class="round-logo-main">
+    <div class="button-group">
+        <a href="{{ url_for('ogrenci_giris') }}" class="btn btn-primary">Öğrenci Girişi</a>
+        <a href="{{ url_for('akademisyen_giris') }}" class="btn btn-secondary">Akademisyen Girişi</a>
+    </div>
+</div>
+{% endblock %}

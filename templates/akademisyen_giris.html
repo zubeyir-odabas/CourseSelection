@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}Akademisyen Bilgileri{% endblock %}
+
+{% block content %}
+<div class="ogrenci-giris-sayfasi">
+    <div class="form-container">
+        <h1>Akademisyen Girişi</h1>
+        
+        <form method="post" action="{{ url_for('akademisyen_giris') }}">
+            <div class="form-group">
+                <label for="kullanici-adi">Kullanıcı Adı</label>
+                <input type="text" class="form-control" id="kullanici-adi" name="kullanici-adi" required>
+            </div>
+            <div class="form-group">
+                <label for="sifre">Şifre</label>
+                <input type="password" class="form-control" id="sifre" name="sifre" required>
+                <small>
+                    <input type="checkbox" onclick="togglePassword()"> Şifreyi Göster
+                </small>
+            </div>
+            
+            
+
+            <button type="submit" class="btn btn-primary mt-3 w-100">Giriş Yap</button>
+            
+            <!-- Hata Mesajı için Ayrılmış Alan -->
+            <div class="form-error-area">
+                {% if error %}
+                <div class="form-error">
+                    {{ error }}
+                </div>
+                {% endif %}
+            </div>
+            
+            
+        </form>
+    </div>
+    
+</div>
+
+{% endblock %}
